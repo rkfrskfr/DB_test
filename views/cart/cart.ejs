@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .container{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <%- include('../navbar', { user_id: user_id }) %>
+    <div class="container">
+        <h2>장바구니</h2>
+        <br>
+        <table>
+            <tr>
+                <th>책 제목</th>
+                <th>수량</th>
+                <th>가격</th>
+            </tr>
+            <% for(let i=0; i<cartlist.length; i++) { %>
+                <tr>
+                    <td><%= cartlist[i].book_name %></td>
+                    <td>
+                        <form action="/cart/updateItem" method="post">
+                            <input type="hidden" name="cartitem_id" value="<%= cartlist[i].cartitem_id %>">
+                            <input type="number" name="quantity" value="<%= cartlist[i].quantity %>" min="1" step="1" max="<%=cartlist[i].stock %>" required onchange="this.form.submit(value)"> 
+                        </form>
+                    </td>
+                    <td><%= cartlist[i].price * cartlist[i].quantity %></td>
+                </tr>
+            <% } %>
+        </table>
+
+        <h4>총 금액: <%= totalP %></h4>
+
+        <button type="button" onclick="location.href='/order/cartOrder'">구매하기</button>
+    </div>
+</body>
+</html>

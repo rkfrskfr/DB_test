@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .container{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <%- include('../navbar', { user_id: user_id }) %>
+    <div class="container">
+        <h3>주소 등록하기</h3>
+        <form action="/address/register" method="post">
+            <br>
+            <input type="text" id="postal_code" name="postal_code" placeholder="우편번호를 입력해주세요"><br>
+            <input type="text" name="basic_address" placeholder="주소를 입력해주세요"><br>
+            <input type="text" name="detail_address" placeholder="상세주소를 입력해주세요"><br>
+            <button type="submit">등록하기</button>
+        </form>
+    </div>
+</body>
+</html>

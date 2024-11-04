@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .wrap {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      padding-top: 40px;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .card-wrap {
+      width: 18rem;
+      margin-bottom: 1rem;
+      border: 1px solid #dddddd;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s;
+      background-color: white;
+      overflow: hidden;
+    }
+
+    .card-wrap:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-title, .card-content {
+      padding: 1rem;
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: #05C208;
+      margin-bottom: 0.75rem;
+    }
+
+    .card-content {
+      font-size: 1rem;
+      color: #6c757d;
+    }
+  </style>
+
+</head>
+<body>
+  <%- include('navbar', { user_id: user_id }) %>
+  <%- include('book/bookCard', { books: books }) %>
+</body>
+</html>

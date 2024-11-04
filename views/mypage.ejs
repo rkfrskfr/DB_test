@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .container{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <%- include('navbar', { user_id: user_id }) %>
+    <br>
+    <br>
+    <%- include('card/cardList', { cards: cards }) %>
+    <br>
+    <br>
+    <%- include('address/addressList', { address: address }) %>
+    <br>
+    <br>
+    <%- include('order/orderList', { orders: orders }) %>
+</body>
+</html>

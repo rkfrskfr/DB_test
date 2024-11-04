@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .container{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <%- include('../navbar', { user_id: user_id }) %>
+    <div class="container">
+        <h3>주문하기</h3>
+        <form action="/order/orderBook" method="post">
+            <table>
+                <tr>
+                    <th>책 제목</th>
+                    <th>가격</th>
+                </tr>
+                <tbody>
+                    <tr>
+                        <input type="hidden" name="book_id" value="<%= bookData.book_id %>" >
+                        <td><%= bookData.book_name %></td>
+                        <input type="hidden" name="quantity" value="<%= quantity %>" >
+                        <td><%= quantity %></td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+    
+            <input type="hidden" name="price" value="<%= price %>" >
+            <h4>총 금액: <%= price %></h4>
+            <br>
+    
+            <p>카드 선택하기</p>
+            <select name="card_num">
+                <option disabled hidden selected>카드를 선택해주세요</option>
+                <% for(let i=0; i<cardlist.length; i++) { %>
+                    <option value="<%= cardlist[i].card_num %>" key="<%= cardlist[i].card_num %>"><%= cardlist[i].card_num %></option>
+                <% } %>
+            </select>
+    
+            <p>주소 선택하기</p>
+            <select name="postal_code">
+                <option disabled hidden selected>주소를 선택해주세요</option>
+                <% for(let i=0; i<addresslist.length; i++) { %>
+                    <option value="<%= addresslist[i].postal_code %>" key="<%= addresslist[i].postal_code %>"><%= addresslist[i].postal_code %></option>
+                <% } %>
+            </select>
+            <br>
+            <button type="submit">주문하기</button>
+        </form>
+    </div>
+</body>
+</html>

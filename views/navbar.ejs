@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 사이트
+    https://getbootstrap.com/docs/4.3/components/ -->
+    <!-- CSS 가져오기 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Document</title>
+</head>
+<body>
+
+    <nav class="navbar navbar-light ">
+        <a class="navbar-brand" href="/">BOOKSTORE</a>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <div class="d-flex">
+                <% if (!user_id) { %>
+                    <a class="write mr-2" href="/users/signin">로그인</a>
+                    <a class="write mr-2" href="/users/signup">회원가입</a>
+                <% } else { %>
+                    <span class="mr-2"><%= user_id %> 님</span>
+                    <a class="write mr-2" href="/users/logout">로그아웃</a>
+                <% } %>
+                <a class="write mr-2" href="/mypage">마이페이지</a>
+                <a class="write" href="/cart/cart">장바구니</a>
+            </div>
+            </div>
+        </ul>
+
+        <form class="form-inline" action="/search" method="get">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="searchTerm">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </nav>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .container{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>ADDRESS LIST</h2>
+        <br>
+        <a href="/address/addressRegister">주소 등록하기</a>
+        <table>
+            <tr>
+                <th>우편 번호</th>
+                <th>기본 주소</th>
+                <th>상세 주소</th>
+            </tr>
+            <% for(let i=0; i<address.length; i++) { %>
+                <tr>
+                    <td><%= address[i].postal_code %></td>
+                    <td><%= address[i].basic_address %></td>
+                    <td><%= address[i].detail_address %></td>
+                </tr>
+            <% } %>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .container{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <%- include('../navbar', { user_id: user_id }) %>
+    <div class="container">
+        <h3><%= bookdata.book_name %></h3>
+        <p>가격: <%= bookdata.price %> 원</p>
+        <form id="bookForm" method="post">
+            <input type="hidden" name="book_id" value="<%= bookdata.book_id %>" >
+            <input type="number" name="quantity" value="1" min="1" step="1" max="<%= bookdata.stock %>" required>
+            <button class="cart-btn" type="submit" onclick="submitForm('/cart/addItem')">장바구니 담기</button>
+            <button class="buy-btn" type="button" onclick="submitForm('/order/bookOrder')">주문하기</button>
+        </form>
+    </div>
+
+    <script>
+        function submitForm(action) {
+            const form = document.getElementById('bookForm');
+            form.action = action;
+            form.submit();
+        }
+    </script>
+</body>
+</html>

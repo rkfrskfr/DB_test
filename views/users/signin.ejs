@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .container{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <%- include('../navbar', { user_id: user_id }) %>
+    <div class="container">
+        <form action="/users/signin" method="post">
+            <input type="text" id="user_id" name="user_id" placeholder="아이디를 입력하세요"> <br>
+            <input type="password" name="password" placeholder="비밀번호를 입력하세요"> <br>
+            <button type="submit">등록</button>
+        </form>
+    </div>
+</body>
+</html>

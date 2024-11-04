@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrap">
+
+        <% for(let i=0; i<books.length; i++) { %>
+            <a href="/book/detail/<%= books[i].book_id%>">
+                <div class="card-wrap">
+                    <div class="card-title"><%= books[i].book_name %></div>
+                    <div class="card-content"><%= books[i].price %></div>
+                </div>
+            </a>
+        <% } %>
+    </div>
+</body>
+</html>

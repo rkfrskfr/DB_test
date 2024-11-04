@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .container{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>ORDER LIST</h2>
+        <br>
+        <table>
+            <tr>
+                <th>주문날짜</th>
+                <th>책 제목</th>
+                <th>수량</th>
+            </tr>
+            <% for(let order of orders) { %>
+                <tr>
+                  <td><%= order.order_date %></td>
+                  <td>
+                    <% for(let item of order.orderData) { %>
+                      <%= item.book_name %><br>
+                    <% } %>
+                  </td>
+                  <td><%= order.orderData.reduce((sum, item) => sum + item.quantity, 0) %></td>
+                </tr>
+              <% } %>
+        </table>
+    </div>
+</body>
+</html>
